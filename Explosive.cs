@@ -21,8 +21,6 @@ namespace Explosive
                 health_to_restore = (damage / 100.00f) * 85.00f;
                 player.Health += (int)health_to_restore;
 
-                if (player.Health < 101)
-                    player.Health = 102;
                 //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
             }
         }
