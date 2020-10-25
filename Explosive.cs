@@ -16,10 +16,19 @@ namespace Explosive
         {
             if (shit_weapons.Contains(weapon))
             {
-                player.Health += System.Math.Abs(damage - 15);
+                if(player.IsPlayer)
+                    player.Health += System.Math.Abs(damage - 15);
 
                 //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
-            }                     
+            }
+
+            /*
+             * Nerf Vests
+            */
+            if (player.IsPlayer && player.IsAlive && player.Health > 135)
+                player.Health = 135;
+            if (attacker.IsPlayer && attacker.IsAlive && attacker.Health > 135)
+                attacker.Health = 135;
         }
 
         private HashSet<string> constructor()
