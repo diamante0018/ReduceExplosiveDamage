@@ -14,12 +14,9 @@ namespace Explosive
 
         public override void OnPlayerDamage(Entity player, Entity inflictor, Entity attacker, int damage, int dFlags, string mod, string weapon, Vector3 point, Vector3 dir, string hitLoc)
         {
-            float health_to_restore;
-
             if (shit_weapons.Contains(weapon))
             {
-                health_to_restore = (damage / 100.00f) * 85.00f;
-                player.Health += (int)health_to_restore;
+                player.Health += System.Math.Abs(damage - 10);
 
                 //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
             }
@@ -38,8 +35,12 @@ namespace Explosive
             weapons.Add("iw5_smaw_mp");
             weapons.Add("gl_mp");
             weapons.Add("javelin_mp");
-            weapons.Add("bouncingbetty_mp"); 
+            weapons.Add("bouncingbetty_mp");
+            weapons.Add("stealth_bomb_mp");
+            weapons.Add("killstreak_remote_turret_mp");
             return weapons;
         }
+
+
     }
 }
