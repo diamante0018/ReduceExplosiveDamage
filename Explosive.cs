@@ -20,6 +20,14 @@ namespace Explosive
 
                 //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
             }
+
+            /*
+             * Nerf Vests
+             */
+            if (player.Health > 60)
+                player.Health = 60;
+            if (inflictor.Health > 60)
+                inflictor.Health = 60;
         }
 
         private HashSet<string> constructor()
