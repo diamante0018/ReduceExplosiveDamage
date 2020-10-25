@@ -24,10 +24,10 @@ namespace Explosive
             /*
              * Nerf Vests
              */
-            if (player.Health > 60)
-                player.Health = 60;
-            if (inflictor.Health > 60)
-                inflictor.Health = 60;
+            if (player.Health > 150)
+                player.Health = 150;
+            if (inflictor.Health > 150)
+                inflictor.Health = 150;
         }
 
         private HashSet<string> constructor()
