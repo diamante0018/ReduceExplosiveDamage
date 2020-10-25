@@ -19,15 +19,7 @@ namespace Explosive
                 player.Health += System.Math.Abs(damage - 15);
 
                 //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
-            }
-
-            /*
-             * Nerf Vests
-             */
-            if (player.Health > 150)
-                player.Health = 150;
-            if (inflictor.Health > 150)
-                inflictor.Health = 150;
+            }                     
         }
 
         private HashSet<string> constructor()
@@ -47,7 +39,5 @@ namespace Explosive
             weapons.Add("killstreak_remote_turret_mp");
             return weapons;
         }
-
-
     }
 }
