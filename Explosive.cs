@@ -44,7 +44,6 @@ namespace Explosive
             weapons.Add("gl_mp");
             weapons.Add("javelin_mp");
             weapons.Add("bouncingbetty_mp");
-            weapons.Add("stealth_bomb_mp");
             weapons.Add("killstreak_remote_turret_mp");
             return weapons;
         }
