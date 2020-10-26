@@ -12,7 +12,7 @@ namespace Explosive
             shit_weapons = constructor();
             shit_ks = constructor2();
 
-            AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 Made by ^1Diavolo"));
+            AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 ^0V2 ^7Made by ^1Diavolo"));
         }
 
         public override void OnPlayerDamage(Entity player, Entity inflictor, Entity attacker, int damage, int dFlags, string mod, string weapon, Vector3 point, Vector3 dir, string hitLoc)
@@ -41,7 +41,6 @@ namespace Explosive
         {
             HashSet<string> weapons = new HashSet<string>();
             weapons.Add("semtex_mp");
-            weapons.Add("c4_mp");
             weapons.Add("c4death_mp");
             weapons.Add("frag_grenade_mp");
             weapons.Add("rpg_mp");
