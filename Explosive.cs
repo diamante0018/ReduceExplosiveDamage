@@ -52,6 +52,7 @@ namespace Explosive
             weapons.Add("gl_mp");
             weapons.Add("javelin_mp");
             weapons.Add("bouncingbetty_mp");
+            weapons.Add("killstreak_precision_airstrike_mp"); //Should kill player with two runs
             return weapons;
         }
 
@@ -68,6 +69,13 @@ namespace Explosive
             weapons.Add("ac130_40mm_mp");
             weapons.Add("osprey_minigun_mp");
             weapons.Add("osprey_player_minigun_mp");
+            weapons.Add("ims_projectile_mp");
+            weapons.Add("killstreak_ims_mp");
+            weapons.Add("manned_minigun_turret_mp");
+            weapons.Add("manned_gl_turret_mp");
+            weapons.Add("ugv_turret_mp");
+            weapons.Add("ugv_gl_turret_mp");
+            weapons.Add("remote_turret_mp");
             return weapons;
         }
     }
