@@ -51,9 +51,6 @@ namespace Explosive
             weapons.Add("gl_mp");
             weapons.Add("javelin_mp");
             weapons.Add("bouncingbetty_mp");
-            weapons.Add("killstreak_remote_turret_mp");
-            weapons.Add("killstreak_stealth_airstrike_mp");
-            weapons.Add("stealth_bomb_mp");
             return weapons;
         }
 
@@ -66,6 +63,10 @@ namespace Explosive
             weapons.Add("cobra_20mm_mp");
             weapons.Add("littlebird_guard_minigun_mp");
             weapons.Add("pavelow_minigun_mp");
+            weapons.Add("ac130_25mm_mp");
+            weapons.Add("ac130_40mm_mp");
+            weapons.Add("osprey_minigun_mp");
+            weapons.Add("osprey_player_minigun_mp");
             return weapons;
         }
     }
