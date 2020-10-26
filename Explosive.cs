@@ -6,9 +6,12 @@ namespace Explosive
     public class Explosive : BaseScript
     {
         private HashSet<string> shit_weapons;
+        private HashSet<string> shit_ks;
         public Explosive()
         {
             shit_weapons = constructor();
+            shit_ks = constructor2();
+
             AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 Made by ^1Diavolo"));
         }
 
@@ -18,17 +21,20 @@ namespace Explosive
             {
                 if(player.IsPlayer)
                     player.Health += System.Math.Abs(damage - 15);
-
-                //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
             }
+
+            if (shit_ks.Contains(weapon))
+            {
+                player.Health += System.Math.Abs(damage - 5);
+            }
+
+            //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
 
             /*
              * Nerf Vests
             */
-            if (player.IsPlayer && player.IsAlive && player.Health > 135)
-                player.Health = 135;
-            if (attacker.IsPlayer && attacker.IsAlive && attacker.Health > 135)
-                attacker.Health = 135;
+            if (player.IsPlayer && player.IsAlive && player.Health > 130)
+                player.Health = 130;
         }
 
         private HashSet<string> constructor()
@@ -46,6 +52,20 @@ namespace Explosive
             weapons.Add("javelin_mp");
             weapons.Add("bouncingbetty_mp");
             weapons.Add("killstreak_remote_turret_mp");
+            weapons.Add("killstreak_stealth_airstrike_mp");
+            weapons.Add("stealth_bomb_mp");
+            return weapons;
+        }
+
+        private HashSet<string> constructor2()
+        {
+            HashSet<string> weapons = new HashSet<string>();
+            weapons.Add("stealth_bomb_mp");
+            weapons.Add("killstreak_remote_turret_mp");
+            weapons.Add("killstreak_stealth_airstrike_mp");
+            weapons.Add("cobra_20mm_mp");
+            weapons.Add("littlebird_guard_minigun_mp");
+            weapons.Add("pavelow_minigun_mp");
             return weapons;
         }
     }
