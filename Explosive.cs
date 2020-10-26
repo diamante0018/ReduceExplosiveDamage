@@ -25,7 +25,8 @@ namespace Explosive
 
             if (shit_ks.Contains(weapon))
             {
-                player.Health += System.Math.Abs(damage - 5);
+                if (player.IsPlayer)
+                    player.Health += System.Math.Abs(damage - 5);
             }
 
             //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
