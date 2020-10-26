@@ -41,6 +41,7 @@ namespace Explosive
         {
             HashSet<string> weapons = new HashSet<string>();
             weapons.Add("semtex_mp");
+            weapons.Add("c4_mp");
             weapons.Add("c4death_mp");
             weapons.Add("frag_grenade_mp");
             weapons.Add("rpg_mp");
