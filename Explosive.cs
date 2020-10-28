@@ -30,30 +30,35 @@ namespace Explosive
 
             PlayerConnected += SpawnedPlayer;
 
-            AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 ^0V3 ^7Made by ^1Diavolo"));
+            AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 ^0V3.1 ^7Made by ^1Diavolo"));
         }
 
         public override void OnPlayerDamage(Entity player, Entity inflictor, Entity attacker, int damage, int dFlags, string mod, string weapon, Vector3 point, Vector3 dir, string hitLoc)
         {
+           /*
+            * Nerf Vests
+           */
+            if (player.IsPlayer && player.IsAlive && player.Health > 100)
+                player.Health = 100;
+
             if (shit_weapons.Contains(weapon))
             {
                 if(player.IsPlayer)
-                    player.Health += System.Math.Abs(damage - 13);
+                    player.Health += Math.Abs(damage - 13);
             }
 
             if (shit_ks.Contains(weapon))
             {
                 if (player.IsPlayer)
-                    player.Health += System.Math.Abs(damage - 3);
+                    player.Health += Math.Abs(damage - 3);
+            }
+
+            if (weapon.Contains("m320") || weapon.Contains("gl") || weapon.Contains("gp25"))
+            {
+                player.Health += Math.Abs(damage - 3);
             }
 
             //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
-
-            /*
-             * Nerf Vests
-            */
-            if (player.IsPlayer && player.IsAlive && player.Health > 100)
-                player.Health = 100;
         }
 
         private HashSet<string> constructor()
