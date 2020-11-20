@@ -1,6 +1,9 @@
 ﻿using InfinityScript;
+using static InfinityScript.ThreadScript;
+using static InfinityScript.GSCFunctions;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Explosive
 {
@@ -13,24 +16,47 @@ namespace Explosive
             shit_weapons = constructor();
             shit_ks = constructor2();
 
-            Action<Entity> SpawnedPlayer = delegate (Entity entity)
-            {
-                entity.SpawnedPlayer += new Action(() => {
-                    if (entity.HasWeapon("flash_grenade_mp"))
-                    {
-                        entity.Call("setweaponammostock", "flash_grenade_mp", 1);
-                    }
-
-                    else if (entity.HasWeapon("concussion_grenade_mp"))
-                    {
-                        entity.Call("setweaponammostock", "concussion_grenade_mp", 1);
-                    }
-                });
-            };
-
             PlayerConnected += SpawnedPlayer;
 
-            AfterDelay(3000, () => Call("IPrintLn", "^6Reduced explosive damage script^7 ^0V3.1 ^7Made by ^1Diavolo"));
+            AfterDelay(3000, () => IPrintLn("^6Reduced explosive damage script^7 ^0V3.1 ^7Made by ^1Diavolo"));
+        }
+
+        public void SpawnedPlayer(Entity player)
+        {
+            Thread(OnPlayerSpawned(player), (entRef, notify, paras) =>
+            {
+                if (notify == "disconnect" && player.EntRef == entRef)
+                    return false;
+
+                return true;
+            });
+        }
+
+        private static IEnumerator OnPlayerSpawned(Entity player)
+        {
+            while (true)
+            {
+                yield return player.WaitTill("spawned_player");
+
+                if (player.HasWeapon("stinger_mp"))
+                {
+                    player.TakeWeapon("stinger_mp");
+                    player.GiveWeapon("iw5_usp45_mp");
+                    player.SetWeaponAmmoClip("iw5_usp45_mp", 0);
+                    player.SetWeaponAmmoStock("iw5_usp45_mp", 0);
+
+                }
+
+                if (player.HasWeapon("flash_grenade_mp"))
+                {
+                    player.SetWeaponAmmoStock("flash_grenade_mp", 1);
+                }
+
+                else if (player.HasWeapon("concussion_grenade_mp"))
+                {
+                    player.SetWeaponAmmoStock("concussion_grenade_mp", 1);
+                }
+            }
         }
 
         public override void OnPlayerDamage(Entity player, Entity inflictor, Entity attacker, int damage, int dFlags, string mod, string weapon, Vector3 point, Vector3 dir, string hitLoc)
