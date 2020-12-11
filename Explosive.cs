@@ -19,6 +19,7 @@ namespace Explosive
             PlayerConnected += SpawnedPlayer;
 
             AfterDelay(3000, () => IPrintLn("^6Reduced explosive damage script^7 ^0V3.1 ^7Made by ^1Diavolo"));
+            Utilities.PrintToConsole("Reduced explosive damage script. Made by ^1Diavolo for IS 1.5.0");
         }
 
         public void SpawnedPlayer(Entity player)
