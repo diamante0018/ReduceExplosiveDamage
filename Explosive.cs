@@ -1,9 +1,9 @@
 ﻿using InfinityScript;
-using static InfinityScript.ThreadScript;
-using static InfinityScript.GSCFunctions;
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using static InfinityScript.GSCFunctions;
+using static InfinityScript.ThreadScript;
 
 namespace Explosive
 {
@@ -62,15 +62,15 @@ namespace Explosive
 
         public override void OnPlayerDamage(Entity player, Entity inflictor, Entity attacker, int damage, int dFlags, string mod, string weapon, Vector3 point, Vector3 dir, string hitLoc)
         {
-           /*
-            * Nerf Vests
-           */
+            /*
+             * Nerf Vests
+            */
             if (player.IsPlayer && player.IsAlive && player.Health > 100)
                 player.Health = 100;
 
             if (shit_weapons.Contains(weapon))
             {
-                if(player.IsPlayer)
+                if (player.IsPlayer)
                     player.Health += Math.Abs(damage - 13);
             }
 
@@ -80,7 +80,7 @@ namespace Explosive
                     player.Health += Math.Abs(damage - 3);
             }
 
-            if (weapon.Contains("m320") || weapon.Contains("gl") || weapon.Contains("gp25"))
+            if (!weapon.Contains("desert") && (weapon.Contains("m320") || weapon.Contains("gl") || weapon.Contains("gp25")))
             {
                 player.Health += Math.Abs(damage - 3);
             }
@@ -90,43 +90,47 @@ namespace Explosive
 
         private HashSet<string> constructor()
         {
-            HashSet<string> weapons = new HashSet<string>();
-            weapons.Add("semtex_mp");
-            weapons.Add("c4death_mp");
-            weapons.Add("frag_grenade_mp");
-            weapons.Add("rpg_mp");
-            weapons.Add("xm25_mp");
-            weapons.Add("m320_mp");
-            weapons.Add("claymore_mp");
-            weapons.Add("iw5_smaw_mp");
-            weapons.Add("gl_mp");
-            weapons.Add("javelin_mp");
-            weapons.Add("bouncingbetty_mp");
-            weapons.Add("killstreak_precision_airstrike_mp"); //Should kill player with two runs
+            HashSet<string> weapons = new HashSet<string>
+            {
+                "semtex_mp",
+                "c4death_mp",
+                "frag_grenade_mp",
+                "rpg_mp",
+                "xm25_mp",
+                "m320_mp",
+                "claymore_mp",
+                "iw5_smaw_mp",
+                "gl_mp",
+                "javelin_mp",
+                "bouncingbetty_mp",
+                "killstreak_precision_airstrike_mp" //Should kill player with two runs
+            };
             return weapons;
         }
 
         private HashSet<string> constructor2()
         {
-            HashSet<string> weapons = new HashSet<string>();
-            weapons.Add("stealth_bomb_mp");
-            weapons.Add("frag_grenade_short_mp");
-            weapons.Add("killstreak_remote_turret_mp");
-            weapons.Add("killstreak_stealth_airstrike_mp");
-            weapons.Add("cobra_20mm_mp");
-            weapons.Add("littlebird_guard_minigun_mp");
-            weapons.Add("pavelow_minigun_mp");
-            weapons.Add("ac130_25mm_mp");
-            weapons.Add("ac130_40mm_mp");
-            weapons.Add("osprey_minigun_mp");
-            weapons.Add("osprey_player_minigun_mp");
-            weapons.Add("ims_projectile_mp");
-            weapons.Add("killstreak_ims_mp");
-            weapons.Add("manned_minigun_turret_mp");
-            weapons.Add("manned_gl_turret_mp");
-            weapons.Add("ugv_turret_mp");
-            weapons.Add("ugv_gl_turret_mp");
-            weapons.Add("remote_turret_mp");
+            HashSet<string> weapons = new HashSet<string>
+            {
+                "stealth_bomb_mp",
+                "frag_grenade_short_mp",
+                "killstreak_remote_turret_mp",
+                "killstreak_stealth_airstrike_mp",
+                "cobra_20mm_mp",
+                "littlebird_guard_minigun_mp",
+                "pavelow_minigun_mp",
+                "ac130_25mm_mp",
+                "ac130_40mm_mp",
+                "osprey_minigun_mp",
+                "osprey_player_minigun_mp",
+                "ims_projectile_mp",
+                "killstreak_ims_mp",
+                "manned_minigun_turret_mp",
+                "manned_gl_turret_mp",
+                "ugv_turret_mp",
+                "ugv_gl_turret_mp",
+                "remote_turret_mp"
+            };
             return weapons;
         }
     }
