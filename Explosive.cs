@@ -13,8 +13,8 @@ namespace Explosive
         private HashSet<string> shit_ks;
         public Explosive()
         {
-            shit_weapons = constructor();
-            shit_ks = constructor2();
+            shit_weapons = Constructor();
+            shit_ks = Constructor2();
 
             PlayerConnected += SpawnedPlayer;
 
@@ -24,6 +24,10 @@ namespace Explosive
 
         public void SpawnedPlayer(Entity player)
         {
+            player.SetClientDvar("cg_hudGrenadeIconMaxRangeFlash", 1200f);
+            player.SetClientDvar("cg_hudGrenadeIconMaxRangeFrag", 1200f);
+            player.SetClientDvar("cg_hudGrenadeIconMaxHeight", 200f);
+
             Thread(OnPlayerSpawned(player), (entRef, notify, paras) =>
             {
                 if (notify == "disconnect" && player.EntRef == entRef)
@@ -88,7 +92,7 @@ namespace Explosive
             //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
         }
 
-        private HashSet<string> constructor()
+        private HashSet<string> Constructor()
         {
             HashSet<string> weapons = new HashSet<string>
             {
@@ -108,7 +112,7 @@ namespace Explosive
             return weapons;
         }
 
-        private HashSet<string> constructor2()
+        private HashSet<string> Constructor2()
         {
             HashSet<string> weapons = new HashSet<string>
             {
