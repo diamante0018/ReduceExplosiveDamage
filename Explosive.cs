@@ -24,10 +24,6 @@ namespace Explosive
 
         public void SpawnedPlayer(Entity player)
         {
-            player.SetClientDvar("cg_hudGrenadeIconMaxRangeFlash", 1200f);
-            player.SetClientDvar("cg_hudGrenadeIconMaxRangeFrag", 1200f);
-            player.SetClientDvar("cg_hudGrenadeIconMaxHeight", 200f);
-
             Thread(OnPlayerSpawned(player), (entRef, notify, paras) =>
             {
                 if (notify == "disconnect" && player.EntRef == entRef)
