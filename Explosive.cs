@@ -69,24 +69,22 @@ namespace Explosive
             /*
              * Nerf Vests
             */
-            if (player.IsPlayer && player.IsAlive && player.Health > 100)
+            if (player.Health > 100)
                 player.Health = 100;
 
             if (shit_weapons.Contains(weapon))
-            {
-                if (player.IsPlayer)
-                    player.Health += Math.Abs(damage - 13);
-            }
+                player.Health += Math.Abs(damage - 13);
 
             if (shit_ks.Contains(weapon))
-            {
-                if (player.IsPlayer)
-                    player.Health += Math.Abs(damage - 3);
-            }
+                player.Health += Math.Abs(damage - 3);
 
             if (!weapon.Contains("desert") && (weapon.Contains("m320") || weapon.Contains("gl") || weapon.Contains("gp25")))
-            {
                 player.Health += Math.Abs(damage - 3);
+            
+            if (weapon.Contains("iw5_acr_mp") || weapon.Contains("iw5_mp7_mp"))
+            {
+                double correction = (damage / 100.0) * 75.0;
+                player.Health += Convert.ToInt32(correction);
             }
 
             //Utilities.SayTo(player, string.Format("Weapon: ^1{0}^7 Damage: ^1{1} ^7Health: ^1{2}", weapon, damage,player.Health));
